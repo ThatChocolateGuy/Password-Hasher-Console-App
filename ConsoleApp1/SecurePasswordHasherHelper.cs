@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace PasswordHasherConsoleApp
 {
     public sealed class SecurePasswordHasherHelper
     {

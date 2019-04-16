@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConsoleApp1
+namespace PasswordHasherConsoleApp
 {
     class Program
     {
@@ -28,13 +28,13 @@ namespace ConsoleApp1
             Console.WriteLine("Hashed PW: " + hashed_pw);
             Console.WriteLine("Salt: " + Convert.ToBase64String(salt));
             Console.WriteLine("Hash: " + Convert.ToBase64String(hash));
+            Console.WriteLine("Salted Hash: " + Convert.ToBase64String(hashBytes));
 
             if (SecurePasswordHasherHelper.Verify(Console.ReadLine(), hashed_pw))
             {
                 Console.WriteLine("Password Verified");
                 Console.ReadKey();
             }
-            Console.WriteLine("Hello World!");
         }
     }
 }
