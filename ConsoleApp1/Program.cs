@@ -6,7 +6,8 @@ namespace PasswordHasherConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("PW: ");
+            Console.WriteLine("Enter password to hash: ");
+            //create hashed pw from user input
             string hashed_pw = SecurePasswordHasherHelper.Hash(Console.ReadLine());
 
             //extract iteration and Base64 string
@@ -25,14 +26,21 @@ namespace PasswordHasherConsoleApp
             var hash = new byte[20];
             Array.Copy(hashBytes, salt.Length, hash, 0, 20);
 
-            Console.WriteLine("Hashed PW: " + hashed_pw);
+            Console.WriteLine("\nHashed PW: " + hashed_pw);
             Console.WriteLine("Salt: " + Convert.ToBase64String(salt));
             Console.WriteLine("Hash: " + Convert.ToBase64String(hash));
             Console.WriteLine("Salted Hash: " + Convert.ToBase64String(hashBytes));
+            Console.WriteLine("\nConfirm PW: ");
 
+            //verify user input matches decrypted hash
             if (SecurePasswordHasherHelper.Verify(Console.ReadLine(), hashed_pw))
             {
-                Console.WriteLine("Password Verified");
+                Console.WriteLine("\nPassword Verified");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("\nPasswords do not match");
                 Console.ReadKey();
             }
         }
